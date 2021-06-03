@@ -3,7 +3,7 @@
 class Airport{
 
 constructor() {
-  this._hangar = []
+  this._hangar = [];
 }
 
   planes(){
@@ -11,11 +11,18 @@ constructor() {
   }
 
   clearForLanding(plane) {
-    this._hangar.push(plane)
-  };
+    this._hangar.push(plane);
+  }
 
   clearForTakeOff(plane) {
-    this._hangar = []
+    if(this.isStormy()) {
+      throw new Error('cannot takeoff during storm');
+    }
+    this._hangar = [];
   }
+
+isStormy(){
+  return false;
+}
 
 };
